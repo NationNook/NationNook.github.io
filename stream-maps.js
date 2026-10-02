@@ -9,7 +9,7 @@ function streamedMapsGame(manifest) {
   for (const entry of manifest.files) {
     // MODIFIED: Changed the url validation check so it accepts absolute URLs from the original server
     if (!entry || !/^[a-z0-9_-]+\.map$/.test(entry.name) || names.has(entry.name) ||
-        (entry.url !== '/downloaded-maps/' + entry.name && entry.url !== 'https://lolgames.net' + entry.name) ||
+        (entry.url !== '/downloaded-maps/' + entry.name && entry.url !== 'https://lolgames.net/downloaded-maps/' + entry.name) ||
         !Number.isSafeInteger(entry.size) || entry.size < 2048) {
       throw new Error('Invalid streamed map entry.');
     }
