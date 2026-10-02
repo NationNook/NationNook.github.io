@@ -1,0 +1,27 @@
+{
+  "versions": [
+    {
+      "name": "v1",
+      "sourceVersion": "fb7d1b75a8296a45",
+      "version": "4c512f4efabdf88a",
+      "wasmSha256": "a801ae18bd2758498be7af9bc9389a8caa92de6adb896ee8695e5ac0a032c5cc",
+      "wasmBytes": 3036812,
+      "firstDeployedUtc": "2026-09-30T16:27:46+00:00",
+      "url": "/v1/",
+      "storageNamespace": "halo-archives/v1"
+    },
+    {
+      "name": "v2",
+      "sourceVersion": "4ee9bb0616c64968",
+      "version": "e19d25b01c50bf5b",
+      "wasmSha256": "2fbbc13a5a0fa00cb32b928d475e8c7b6bb35b4615159b0dc540910a7921165b",
+      "wasmBytes": 3082953,
+      "firstDeployedUtc": "2026-10-02T03:23:06+00:00",
+      "url": "/v2/",
+      "storageNamespace": "halo-archives/v2"
+    }
+  ],
+  "archiveRoot": "/srv/halo/latest-releases/deploy-j3gpvar4/archives",
+  "latest": "v2",
+  "latestVersion": "15557dbdc205b12d"
+}
