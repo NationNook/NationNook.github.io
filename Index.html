@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<!-- saved from url=(0026)https://halo.lolgames.net/ -->
-<html lang="en" native-dark-active=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -9,1160 +9,44 @@
 <meta name="apple-mobile-web-app-title" content="Halo CE">
 <meta name="theme-color" content="#0b0d12">
 <title>Halo CE Mobile</title>
-<link rel="manifest" href="https://halo.lolgames.net/manifest.webmanifest">
-<link rel="apple-touch-icon" href="https://halo.lolgames.net/icons/icon-180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="https://halo.lolgames.net/icons/icon-192.png">
-<link rel="stylesheet" href="./Halo CE Mobile_files/style.css" class="native-dark-class-original"><style lang="en" type="text/css" native-dark-index="0" class="native-dark-class-cloned">:root {
-  --bg: #0b0d12;
-  --panel: #151922;
-  --panel-edge: #262c3a;
-  --text: #e8ebf2;
-  --muted: #9aa3b5;
-  --accent: #7fd1ff;
-  --accent-strong: #3fb4f2;
-  --danger: #ff6b6b;
-  --ok: #7be38c;
-  --warn: #ffd166;
-  color-scheme: dark;
-}
-
-* { box-sizing: border-box; }
-[hidden] { display: none !important; }
-
-html, body {
-  margin: 0;
-  height: 100%;
-  background: var(--bg);
-  color: var(--text);
-  font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  -webkit-text-size-adjust: 100%;
-  overscroll-behavior: none;
-}
-
-body.playing {
-  overflow: hidden;
-  touch-action: none;
-  -webkit-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-}
-
-#screen {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  display: none;
-  background: #000;
-  object-fit: contain;
-  image-rendering: auto;
-}
-
-body.playing #screen { display: block; }
-body.playing #launcher { display: none; }
-
-#launcher {
-  min-height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
-    max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
-}
-
-.panel {
-  width: 100%;
-  max-width: 560px;
-  background: var(--panel);
-  border: 1px solid var(--panel-edge);
-  border-radius: 14px;
-  padding: 20px;
-}
-
-.panel.wide { max-width: 900px; }
-
-h1 { margin: 0; font-size: 28px; letter-spacing: 0.02em; }
-h1 span { color: var(--accent); font-weight: 500; }
-h2 { font-size: 17px; margin: 18px 0 6px; }
-.subtitle { color: var(--muted); margin: 4px 0 12px; }
-.small { color: var(--muted); font-size: 13px; }
-.legal { color: var(--muted); font-size: 12px; margin: 18px 0 0; }
-code { background: #0e1117; padding: 1px 5px; border-radius: 4px; }
-
-.checks { display: grid; gap: 4px; margin: 8px 0; font-size: 14px; }
-.check::before { content: "✓ "; color: var(--ok); }
-.check.bad::before { content: "✕ "; color: var(--danger); }
-.check.warn::before { content: "! "; color: var(--warn); }
-
-.hint {
-  background: #10202b;
-  border: 1px solid #1f4058;
-  border-radius: 10px;
-  padding: 10px 12px;
-  margin: 10px 0;
-  font-size: 14px;
-}
-
-.share-glyph { display: inline-block; font-weight: 700; color: var(--accent); }
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  padding: 0 18px;
-  border-radius: 10px;
-  border: 1px solid var(--panel-edge);
-  background: #1d2330;
-  color: var(--text);
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.button.primary { background: var(--accent-strong); border-color: var(--accent-strong); color: #04121c; }
-.button.danger { color: var(--danger); }
-.button:disabled { opacity: 0.5; }
-#play { width: 100%; font-size: 18px; min-height: 52px; margin-top: 12px; }
-
-.progress { margin-top: 12px; }
-.bar { height: 8px; background: #0e1117; border-radius: 4px; overflow: hidden; }
-#progress-fill { height: 100%; width: 0; background: var(--accent-strong); transition: width 0.2s; }
-
-.online { margin-top: 18px; border-top: 1px solid var(--panel-edge); padding-top: 4px; }
-.online input[type=text] {
-  flex: 1;
-  min-width: 120px;
-  min-height: 40px;
-  padding: 0 10px;
-  border-radius: 8px;
-  border: 1px solid var(--panel-edge);
-  background: #0e1117;
-  color: var(--text);
-  font: inherit;
-}
-.room-line { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 8px 0 4px; }
-.room-line strong { font-size: 20px; letter-spacing: 0.12em; color: var(--accent); }
-.small-button { min-height: 34px; padding: 0 12px; font-size: 13px; }
-.settings input[type=text], .settings input[type=password], .settings select {
-  flex: 1;
-  min-width: 120px;
-  min-height: 36px;
-  padding: 0 8px;
-  border-radius: 8px;
-  border: 1px solid var(--panel-edge);
-  background: #0e1117;
-  color: var(--text);
-  font: inherit;
-}
-.controller-status { margin: 10px 0 0; font-size: 13px; color: var(--muted); }
-.controller-status.ready { color: #9fe870; }
-.games { display: flex; flex-direction: column; gap: 8px; margin: 10px 0; }
-.game {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid var(--panel-edge);
-  background: rgba(255, 255, 255, 0.03);
-}
-.game.chosen { border-color: var(--accent); background: rgba(255, 255, 255, 0.07); }
-.game-pick { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; cursor: pointer; }
-.game-pick input { width: 20px; height: 20px; flex: none; accent-color: var(--accent); }
-.game-pick span { display: flex; flex-direction: column; min-width: 0; }
-.game-pick strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.game-pick small { color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.settings { margin-top: 16px; border-top: 1px solid var(--panel-edge); padding-top: 10px; }
-.settings summary { cursor: pointer; color: var(--muted); min-height: 32px; }
-.row { display: flex; gap: 10px; align-items: center; margin: 8px 0; flex-wrap: wrap; }
-.row input[type=range] { flex: 1; min-width: 120px; }
-.row.buttons .button { flex: 1 1 auto; }
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(5, 6, 9, 0.92);
-  z-index: 20;
-  padding: 16px;
-  text-align: center;
-}
-
-.overlay[hidden] { display: none; }
-.overlay pre {
-  text-align: left;
-  white-space: pre-wrap;
-  word-break: break-word;
-  max-height: 60vh;
-  overflow: auto;
-  font-size: 12px;
-  background: #0e1117;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-.toast {
-  position: fixed;
-  left: 50%;
-  top: max(12px, env(safe-area-inset-top));
-  transform: translateX(-50%);
-  background: rgba(21, 25, 34, 0.95);
-  border: 1px solid var(--panel-edge);
-  padding: 8px 14px;
-  border-radius: 10px;
-  z-index: 30;
-  font-size: 14px;
-  max-width: calc(100vw - 32px);
-}
-
-/* ---------- touch controls
-
-Laid out like the original Xbox controller (the Controller S): A, B, X and Y
-as green, red, blue and yellow translucent gems in a diamond, the white and
-black buttons below them, the L and R triggers above each side, back and
-start between the thumbs, a round d-pad under the left thumb, and the left
-stick where the left thumb lands. */
-
-.touch-layer {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  touch-action: none;
-  --edge-left: env(safe-area-inset-left);
-  --edge-right: env(safe-area-inset-right);
-  --edge-bottom: env(safe-area-inset-bottom);
-  --face: 56px;
-  --gap: 5px;
-  /* the controller's charcoal body */
-  --body: rgba(28, 30, 28, 0.5);
-  --rim: rgba(160, 170, 160, 0.45);
-}
-
-body.has-controller .touch-layer { display: none; }
-
-.touch-button {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(235, 240, 235, 0.95);
-  background: var(--body);
-  border: 1.5px solid var(--rim);
-  -webkit-user-select: none;
-  user-select: none;
-  font-family: "Arial Black", "Helvetica Neue", Arial, sans-serif;
-  transition: transform 0.06s, filter 0.06s;
-}
-
-.touch-button.pressed { transform: scale(0.92); filter: brightness(1.45); }
-
-.touch-button .glyph { font-weight: 900; line-height: 1; }
-.touch-button .caption {
-  position: absolute;
-  top: 100%;
-  margin-top: 3px;
-  font: 700 9px/1 -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
-  white-space: nowrap;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-}
-
-/* A, B, X and Y: domed translucent gems, their letters embossed */
-.touch-button.face {
-  width: var(--face);
-  height: var(--face);
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
-  box-shadow: inset 0 -6px 10px rgba(0, 0, 0, 0.35), inset 0 5px 8px rgba(255, 255, 255, 0.35),
-    0 3px 6px rgba(0, 0, 0, 0.45);
-  --diamond-right: calc(46px + var(--edge-right));
-  --diamond-bottom: calc(96px + var(--edge-bottom));
-}
-
-.touch-button.face .glyph {
-  font-size: 22px;
-  color: rgba(255, 255, 255, 0.92);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35), 0 1px 1px rgba(255, 255, 255, 0.4);
-}
-
-.face-a { background: radial-gradient(circle at 38% 30%, rgba(160, 235, 120, 0.85), rgba(40, 150, 40, 0.72) 60%, rgba(15, 80, 20, 0.8)); }
-.face-b { background: radial-gradient(circle at 38% 30%, rgba(255, 150, 150, 0.85), rgba(210, 30, 35, 0.72) 60%, rgba(110, 10, 15, 0.8)); }
-.face-x { background: radial-gradient(circle at 38% 30%, rgba(150, 200, 255, 0.85), rgba(30, 90, 210, 0.72) 60%, rgba(10, 40, 120, 0.8)); }
-.face-y { background: radial-gradient(circle at 38% 30%, rgba(255, 240, 150, 0.9), rgba(235, 190, 20, 0.75) 60%, rgba(140, 100, 0, 0.8)); }
-.face-y .glyph { color: rgba(70, 50, 0, 0.85); text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); }
-
-.face-a { right: calc(var(--diamond-right) + var(--face) + var(--gap)); bottom: var(--diamond-bottom); }
-.face-b { right: var(--diamond-right); bottom: calc(var(--diamond-bottom) + var(--face) + var(--gap)); }
-.face-x { right: calc(var(--diamond-right) + 2 * (var(--face) + var(--gap))); bottom: calc(var(--diamond-bottom) + var(--face) + var(--gap)); }
-.face-y { right: calc(var(--diamond-right) + var(--face) + var(--gap)); bottom: calc(var(--diamond-bottom) + 2 * (var(--face) + var(--gap))); }
-
-/* white and black: smaller gems below the diamond, towards the edge */
-.touch-button.duo {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  bottom: calc(22px + var(--edge-bottom));
-  box-shadow: inset 0 -5px 8px rgba(0, 0, 0, 0.35), inset 0 4px 6px rgba(255, 255, 255, 0.3), 0 3px 6px rgba(0, 0, 0, 0.45);
-}
-
-.duo-white {
-  right: calc(76px + var(--edge-right));
-  background: radial-gradient(circle at 38% 30%, rgba(255, 255, 255, 0.95), rgba(215, 220, 215, 0.85) 60%, rgba(150, 155, 150, 0.85));
-  border-color: rgba(255, 255, 255, 0.7);
-}
-
-.duo-black {
-  right: calc(24px + var(--edge-right));
-  background: radial-gradient(circle at 38% 30%, rgba(110, 110, 110, 0.95), rgba(30, 30, 30, 0.9) 60%, rgba(5, 5, 5, 0.9));
-  border-color: rgba(150, 150, 150, 0.6);
-}
-
-/* the triggers: the controller's curved L and R above each side */
-.touch-button.trigger {
-  width: 96px;
-  height: 52px;
-  top: calc(56px + env(safe-area-inset-top));
-  background: linear-gradient(180deg, rgba(90, 95, 90, 0.6), rgba(30, 32, 30, 0.6));
-}
-
-.touch-button.trigger .glyph { font-size: 22px; }
-.touch-button.trigger.left-side { left: calc(26px + var(--edge-left)); border-radius: 30px 14px 10px 22px; }
-.touch-button.trigger.right-side { right: calc(26px + var(--edge-right)); border-radius: 14px 30px 22px 10px; }
-
-/* the stick clicks: pressing a thumbstick, which a touch screen cannot do */
-.touch-button.stick-click {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(60, 64, 60, 0.6) 35%, rgba(25, 27, 25, 0.6) 36%);
-}
-
-.touch-button.left-click { left: calc(200px + var(--edge-left)); bottom: calc(var(--edge-bottom) + 176px); }
-.touch-button.right-click { right: calc(236px + var(--edge-right)); bottom: calc(var(--edge-bottom) + 176px); }
-
-/* back and start: the small black buttons between the thumbs */
-.touch-button.system {
-  width: 54px;
-  height: 26px;
-  border-radius: 13px;
-  bottom: calc(24px + var(--edge-bottom));
-  background: rgba(15, 15, 15, 0.65);
-}
-
-.touch-button.system .glyph { font: 800 9px/1 -apple-system, BlinkMacSystemFont, Roboto, sans-serif; letter-spacing: 0.08em; }
-.touch-button.back { left: calc(50% - 62px); }
-.touch-button.start { left: calc(50% + 8px); }
-
-/* the d-pad: a round plate with a cross, each arm a button */
-.touch-dpad {
-  position: absolute;
-  left: calc(190px + var(--edge-left));
-  bottom: calc(var(--edge-bottom) + 14px);
-  width: 124px;
-  height: 124px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 35%, rgba(80, 84, 80, 0.5), rgba(25, 27, 25, 0.55));
-  border: 1.5px solid var(--rim);
-}
-
-.touch-dpad .touch-button {
-  width: 38px;
-  height: 36px;
-  border-radius: 4px;
-  background: rgba(20, 21, 20, 0.7);
-  border-color: rgba(120, 125, 120, 0.4);
-}
-
-/* the arms meet at the centre without overlapping (the plate is 124 wide,
-its border inside) */
-.touch-dpad .up { left: 42px; top: 7px; }
-.touch-dpad .down { left: 42px; top: 79px; }
-.touch-dpad .left { left: 7px; top: 43px; width: 35px; height: 36px; }
-.touch-dpad .right { left: 80px; top: 43px; width: 35px; height: 36px; }
-
-.touch-dpad .touch-button::after {
-  content: "";
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-}
-
-.touch-dpad .up::after { border-bottom-color: rgba(220, 225, 220, 0.8); transform: translateY(-3px); }
-.touch-dpad .down::after { border-top-color: rgba(220, 225, 220, 0.8); transform: translateY(3px); }
-.touch-dpad .left::after { border-right-color: rgba(220, 225, 220, 0.8); transform: translateX(-3px); }
-.touch-dpad .right::after { border-left-color: rgba(220, 225, 220, 0.8); transform: translateX(3px); }
-
-/* the left stick: a concave black thumbstick where the thumb lands */
-.touch-stick {
-  position: absolute;
-  width: 128px;
-  height: 128px;
-  border-radius: 50%;
-  border: 1.5px solid var(--rim);
-  background: radial-gradient(circle, rgba(28, 30, 28, 0.2) 0%, rgba(28, 30, 28, 0.5) 100%);
-  left: calc(34px + var(--edge-left));
-  bottom: calc(46px + var(--edge-bottom));
-  pointer-events: none;
-  opacity: 0.65;
-  transition: opacity 0.1s;
-}
-
-.touch-stick.active { opacity: 1; }
-
-.touch-knob {
-  position: absolute;
-  left: 32px;
-  top: 32px;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, rgba(18, 18, 18, 0.95) 38%, rgba(55, 58, 55, 0.95) 40%,
-    rgba(30, 32, 30, 0.95) 70%);
-  border: 1.5px solid rgba(140, 145, 140, 0.6);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.55);
-}
-
-/* smaller phones in landscape */
-@media (max-height: 380px) {
-  .touch-layer { --face: 50px; }
-  .touch-button.face { --diamond-bottom: calc(86px + var(--edge-bottom)); }
-  .touch-button.trigger { top: calc(46px + env(safe-area-inset-top)); height: 46px; width: 86px; }
-  .touch-button.left-click, .touch-button.right-click { bottom: calc(var(--edge-bottom) + 158px); }
-  .touch-button.right-click { right: calc(210px + var(--edge-right)); }
-}
-
-/* ---------- touch controls: the modern layout
-
-As in a modern mobile shooter: a large fire button under the right thumb,
-which also aims while held, the actions around it as white line icons on dark
-glass, a second fire button for the left thumb, pause and score at the top,
-and a floating stick anywhere on the left half. Sizes are in --u, which
-shrinks on small phones. */
-
-.touch-layer.modern { --u: 1px; }
-
-.touch-layer.modern .touch-button {
-  width: calc(54 * var(--u));
-  height: calc(54 * var(--u));
-  border-radius: 50%;
-  background: rgba(8, 10, 14, 0.36);
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-  font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-}
-
-.touch-layer.modern .touch-button.pressed {
-  transform: scale(0.92);
-  filter: none;
-  background: rgba(255, 255, 255, 0.88);
-  color: rgba(10, 12, 16, 0.95);
-  border-color: #fff;
-}
-
-.touch-layer.modern .touch-button .glyph { display: flex; width: 52%; height: 52%; }
-.touch-layer.modern .touch-button .glyph svg { width: 100%; height: 100%; }
-
-.touch-layer.modern .touch-button .caption {
-  margin-top: calc(2 * var(--u));
-  font-size: calc(8 * var(--u));
-  color: rgba(255, 255, 255, 0.75);
-}
-
-/* the Xbox button each one is, for the menus */
-.touch-layer.modern .badge {
-  position: absolute;
-  top: calc(-4 * var(--u));
-  right: calc(-4 * var(--u));
-  width: calc(17 * var(--u));
-  height: calc(17 * var(--u));
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font: 800 calc(10 * var(--u))/1 -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-}
-
-.touch-layer.modern .badge-a { background: #2f9a2f; }
-.touch-layer.modern .badge-b { background: #c8262c; }
-.touch-layer.modern .badge-x { background: #2860c8; }
-.touch-layer.modern .badge-y { background: #d8a800; color: #2a2000; }
-
-/* right thumb */
-.touch-layer.modern .m-fire {
-  width: calc(86 * var(--u));
-  height: calc(86 * var(--u));
-  right: calc(40 * var(--u) + var(--edge-right));
-  bottom: calc(96 * var(--u) + var(--edge-bottom));
-  border-width: 2.5px;
-  background: rgba(8, 10, 14, 0.42);
-}
-
-.touch-layer.modern .m-fire .glyph { width: 46%; height: 46%; }
-
-.touch-layer.modern .m-zoom { right: calc(146 * var(--u) + var(--edge-right)); bottom: calc(168 * var(--u) + var(--edge-bottom)); }
-.touch-layer.modern .m-melee { right: calc(150 * var(--u) + var(--edge-right)); bottom: calc(86 * var(--u) + var(--edge-bottom)); }
-.touch-layer.modern .m-reload {
-  width: calc(50 * var(--u));
-  height: calc(50 * var(--u));
-  right: calc(58 * var(--u) + var(--edge-right));
-  bottom: calc(206 * var(--u) + var(--edge-bottom));
-}
-.touch-layer.modern .m-jump {
-  width: calc(60 * var(--u));
-  height: calc(60 * var(--u));
-  right: calc(22 * var(--u) + var(--edge-right));
-  bottom: calc(14 * var(--u) + var(--edge-bottom));
-}
-.touch-layer.modern .m-crouch { right: calc(104 * var(--u) + var(--edge-right)); bottom: calc(14 * var(--u) + var(--edge-bottom)); }
-.touch-layer.modern .m-grenade {
-  width: calc(50 * var(--u));
-  height: calc(50 * var(--u));
-  right: calc(142 * var(--u) + var(--edge-right));
-  bottom: calc(246 * var(--u) + var(--edge-bottom));
-}
-.touch-layer.modern .m-grenade-type {
-  width: calc(40 * var(--u));
-  height: calc(40 * var(--u));
-  right: calc(214 * var(--u) + var(--edge-right));
-  bottom: calc(262 * var(--u) + var(--edge-bottom));
-}
-.touch-layer.modern .m-light {
-  width: calc(40 * var(--u));
-  height: calc(40 * var(--u));
-  right: calc(22 * var(--u) + var(--edge-right));
-  bottom: calc(276 * var(--u) + var(--edge-bottom));
-}
-
-/* weapon swap: a wide pill beside crouch, as a weapon slot */
-.touch-layer.modern .m-swap {
-  width: calc(76 * var(--u));
-  height: calc(42 * var(--u));
-  border-radius: calc(21 * var(--u));
-  right: calc(178 * var(--u) + var(--edge-right));
-  bottom: calc(20 * var(--u) + var(--edge-bottom));
-}
-.touch-layer.modern .m-swap .glyph { width: 34%; height: 62%; }
-
-/* left thumb: a second fire button above the stick */
-.touch-layer.modern .m-fire2 {
-  width: calc(60 * var(--u));
-  height: calc(60 * var(--u));
-  left: calc(36 * var(--u) + var(--edge-left));
-  bottom: calc(212 * var(--u) + var(--edge-bottom));
-}
-
-/* pause and score in the top corners */
-.touch-layer.modern .m-top {
-  width: calc(44 * var(--u));
-  height: calc(32 * var(--u));
-  border-radius: calc(16 * var(--u));
-  top: calc(8 * var(--u) + env(safe-area-inset-top));
-}
-.touch-layer.modern .m-top .glyph { width: 40%; height: 56%; }
-.touch-layer.modern .m-top .caption { display: none; }
-.touch-layer.modern .m-score { left: calc(50% - 52 * var(--u)); }
-.touch-layer.modern .m-pause { left: calc(50% + 8 * var(--u)); }
-
-/* the stick: a ring of glass that appears where the thumb lands */
-.touch-layer.modern .touch-stick {
-  width: 120px;
-  height: 120px;
-  left: calc(56 * var(--u) + var(--edge-left));
-  bottom: calc(40 * var(--u) + var(--edge-bottom));
-  border: 2px solid rgba(255, 255, 255, 0.45);
-  background: rgba(8, 10, 14, 0.22);
-  opacity: 0.7;
-}
-
-.touch-layer.modern .touch-knob {
-  left: 34px;
-  top: 34px;
-  width: 52px;
-  height: 52px;
-  background: rgba(255, 255, 255, 0.55);
-  border: 2px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
-}
-
-@media (max-height: 400px) {
-  .touch-layer.modern { --u: 0.88px; }
-}
-
-@media (max-height: 340px) {
-  .touch-layer.modern { --u: 0.76px; }
-}
-
-/* Settings: "Show the frame rate" */
-.fps {
-  position: fixed;
-  top: max(6px, env(safe-area-inset-top));
-  left: max(8px, env(safe-area-inset-left));
-  z-index: 30;
-  padding: 2px 8px;
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.55);
-  color: #9fe870;
-  font: 600 12px/1.4 ui-monospace, Menlo, monospace;
-  white-space: pre;
-  pointer-events: none;
-}
-
-/* ---------- the in-game menu */
-
-.menu-button {
-  position: fixed;
-  z-index: 15;
-  top: calc(8px + env(safe-area-inset-top));
-  left: calc(8px + env(safe-area-inset-left));
-  width: 36px;
-  height: 32px;
-  padding: 6px 8px;
-  border-radius: 10px;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
-  background: rgba(8, 10, 14, 0.35);
-  color: rgba(255, 255, 255, 0.9);
-}
-.menu-button svg { width: 100%; height: 100%; display: block; }
-body:not(.playing) .menu-button { display: none; }
-
-.game-menu { z-index: 25; background: rgba(5, 6, 9, 0.8); }
-.game-menu .panel { max-height: 92vh; overflow: auto; }
-.game-menu select { min-height: 36px; border-radius: 8px; border: 1px solid var(--panel-edge); background: #0e1117; color: var(--text); padding: 0 8px; flex: 1; min-width: 120px; }
-
-/* ---------- the touch layout editor */
-
-.layout-editor {
-  position: fixed;
-  inset: 0;
-  z-index: 30;
-  background: radial-gradient(ellipse at 50% 40%, rgba(40, 55, 80, 0.55), rgba(5, 6, 9, 0.9));
-  touch-action: none;
-}
-body.playing .layout-editor { background: rgba(5, 6, 9, 0.45); }
-.layout-editor .touch-layer { display: block !important; }
-.layout-editor .touch-stick { pointer-events: auto; opacity: 0.9; }
-.layout-editor [data-control] { cursor: grab; }
-.layout-editor .editing { outline: 2px dashed #7fd1ff; outline-offset: 4px; }
-.touch-dpad.editing { border-radius: 50%; }
-.editor-bar {
-  position: absolute;
-  z-index: 40;
-  left: 50%;
-  top: calc(8px + env(safe-area-inset-top));
-  transform: translateX(-50%);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  max-width: min(94vw, 720px);
-  padding: 8px 12px;
-  border-radius: 12px;
-  background: rgba(14, 17, 23, 0.92);
-  border: 1px solid var(--panel-edge);
-  color: var(--text);
-  font-size: 13px;
-}
-.editor-bar label { display: flex; align-items: center; gap: 6px; }
-.editor-bar input[type=range] { width: 110px; }
-.editor-hint { color: var(--muted); }
-/* the layout is for the screen held sideways */
-@media (orientation: portrait) {
-  .layout-editor::before {
-    content: "Turn your device sideways to edit the layout.";
-    position: absolute;
-    inset: 0;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    text-align: center;
-    background: rgba(5, 6, 9, 0.95);
-    color: var(--text);
-    font-size: 17px;
-  }
-}
-/* on the start page, nothing shows through */
-body:not(.playing) .layout-editor { background: radial-gradient(ellipse at 50% 40%, #1c2536, #06070a); }
-
-/* ---------- the theme: a UNSC terminal over a starfield
-
-Orbitron for titles and Rajdhani for labels and buttons (fonts/, SIL Open
-Font License). The backdrop is art/ring.jpg, the ring of Halo's main menu
-(a frame of the game's own scene, used under Microsoft's Game Content Usage
-Rules), or once the player's own game has run, a frame of its main menu
-(app.js, captureBackdrop), kept on the device only. */
-
-@font-face {
-  font-family: "Orbitron";
-  font-weight: 700 900;
-  font-display: swap;
-  src: url('https://halo.lolgames.net/fonts/orbitron-900.woff2') format("woff2");
-}
-@font-face {
-  font-family: "Rajdhani";
-  font-weight: 500;
-  font-display: swap;
-  src: url('https://halo.lolgames.net/fonts/rajdhani-500.woff2') format("woff2");
-}
-@font-face {
-  font-family: "Rajdhani";
-  font-weight: 700;
-  font-display: swap;
-  src: url('https://halo.lolgames.net/fonts/rajdhani-700.woff2') format("woff2");
-}
-
-:root {
-  --bg: #04070c;
-  --panel: rgba(9, 15, 25, 0.8);
-  --panel-edge: rgba(127, 209, 255, 0.22);
-  --accent: #7fd6ff;
-  --accent-strong: #36b6f0;
-  --glow: rgba(95, 200, 255, 0.45);
-  --ui-font: "Rajdhani", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --title-font: "Orbitron", "Rajdhani", -apple-system, sans-serif;
-}
-
-html, body { background: var(--bg); }
-
-.backdrop {
-  position: fixed;
-  inset: -12px;
-  z-index: -1;
-  filter: brightness(0.6);
-  background: url('https://halo.lolgames.net/art/ring.jpg') 62% center / cover no-repeat, var(--bg);
-}
-body.has-backdrop .backdrop {
-  background-size: cover;
-  background-position: center;
-  filter: blur(3px) brightness(0.45) saturate(1.15);
-  transform: scale(1.03);
-}
-body.playing .backdrop { display: none; }
-
-#launcher { background: transparent; }
-
-.panel {
-  position: relative;
-  background: var(--panel);
-  border: 1px solid var(--panel-edge);
-  border-radius: 4px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 20px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(127, 209, 255, 0.12);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-/* corner brackets */
-#launcher > .panel::before, #launcher > .panel::after {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border: 2px solid var(--accent);
-  pointer-events: none;
-}
-#launcher > .panel::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
-#launcher > .panel::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
-
-.title {
-  margin: 0;
-  font-family: var(--title-font);
-  font-weight: 900;
-  font-size: 30px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  background: linear-gradient(180deg, #ffffff 0%, #d7ecfb 45%, #86b9df 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 0 12px rgba(95, 200, 255, 0.35));
-}
-.title span {
-  font-weight: 700;
-  font-size: 0.55em;
-  letter-spacing: 0.35em;
-  margin-left: 0.3em;
-  vertical-align: 0.35em;
-  background: none;
-  -webkit-text-fill-color: var(--accent);
-  color: var(--accent);
-}
-
-.subtitle { font-family: var(--ui-font); font-size: 17px; font-weight: 500; }
-
-h2 {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--ui-font);
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--panel-edge), transparent); }
-
-.button {
-  font-family: var(--ui-font);
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border-radius: 3px;
-  background: rgba(20, 32, 48, 0.85);
-  border: 1px solid rgba(127, 209, 255, 0.28);
-  transition: background 0.15s, box-shadow 0.15s;
-}
-.button:hover { background: rgba(30, 48, 70, 0.95); }
-.button.primary {
-  background: linear-gradient(180deg, #6fd6ff 0%, #2f9fdc 100%);
-  border-color: #9fe2ff;
-  color: #03111b;
-  box-shadow: 0 0 18px var(--glow), inset 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-.button.danger { color: #ff8a8a; }
-.small-button { font-size: 13px; }
-
-#play {
-  font-family: var(--title-font);
-  font-weight: 900;
-  font-size: 22px;
-  letter-spacing: 0.35em;
-  min-height: 58px;
-  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-}
-
-.checks { font-family: var(--ui-font); font-size: 15px; font-weight: 500; }
-.hint { background: rgba(16, 40, 58, 0.7); border-color: rgba(127, 209, 255, 0.3); border-radius: 3px; }
-.game { border-radius: 3px; background: rgba(12, 22, 34, 0.7); }
-.game.chosen { box-shadow: 0 0 14px rgba(95, 200, 255, 0.25); }
-.game-pick strong { font-family: var(--ui-font); font-size: 17px; letter-spacing: 0.03em; }
-.settings summary { font-family: var(--ui-font); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; font-size: 14px; }
-
-/* ---------- installation guides */
-
-.sheet {
-  position: fixed;
-  z-index: 45;
-  left: 50%;
-  bottom: max(16px, env(safe-area-inset-bottom));
-  transform: translateX(-50%);
-  width: min(92vw, 460px);
-  max-height: calc(100% - 32px);
-  overflow: auto;
-  padding: 18px 20px 20px;
-  background: rgba(9, 15, 25, 0.96);
-  border: 1px solid var(--panel-edge);
-  border-radius: 6px;
-  box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.6), 0 0 24px rgba(95, 200, 255, 0.12);
-  text-align: left;
-}
-.sheet h2 { margin-top: 0; }
-.sheet .button { width: 100%; margin-top: 8px; }
-.steps { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 14px; counter-reset: step; }
-.steps li { display: flex; align-items: center; gap: 12px; font-size: 15px; }
-.step-icon {
-  flex: none;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 1px solid rgba(127, 209, 255, 0.5);
-  background: rgba(20, 40, 60, 0.8);
-  color: var(--accent);
-}
-.step-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
-.checks-ok summary { cursor: pointer; color: var(--ok); font-weight: 700; list-style: none; }
-.checks-ok summary::before { content: "✓ "; }
-.checks-ok summary::-webkit-details-marker { display: none; }
-.checks-ok[open] summary { margin-bottom: 4px; }
-/* the page's body lets the backdrop (behind it) show; html keeps the colour */
-body { background: transparent; }
-body.playing { background: #000; }
-.legal a { color: var(--accent); }
-.legal.credits { margin-top: 14px; }
-.legal.credits strong { color: var(--text); }
-
-/* ---------- matchmaking: open games */
-
-.lobby { margin-top: 14px; }
-.lobby h3 { margin: 0 0 6px; font: 700 14px var(--ui-font); letter-spacing: 0.14em; text-transform: uppercase; color: var(--text); }
-.lobby-list { display: flex; flex-direction: column; gap: 6px; }
-.lobby-room {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 10px;
-  border-radius: 3px;
-  border: 1px solid var(--panel-edge);
-  background: rgba(12, 22, 34, 0.7);
-}
-.lobby-room .who { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.lobby-room strong { font: 700 16px var(--ui-font); letter-spacing: 0.03em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.lobby-room small { color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.lobby-room .count { font: 700 15px var(--ui-font); color: var(--accent); white-space: nowrap; }
-.lobby-room.other-maps { opacity: 0.55; }
-.lobby-room.mine { border-color: var(--accent); }
-#quick-match { min-width: 160px; }
-
-/* ---------- text chat */
-
-.menu-button { overflow: visible; }
-.unread {
-  position: absolute;
-  top: -6px;
-  right: -8px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 5px;
-  border-radius: 9px;
-  background: #e0443c;
-  color: #fff;
-  font: 700 11px/18px -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-  text-align: center;
-}
-
-/* new messages over the game, for a few seconds */
-.chat-feed {
-  position: fixed;
-  z-index: 14;
-  top: calc(48px + env(safe-area-inset-top));
-  left: calc(8px + env(safe-area-inset-left));
-  max-width: min(46vw, 360px);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  pointer-events: none;
-}
-body:not(.playing) .chat-feed { display: none; }
-.chat-line {
-  padding: 3px 8px;
-  border-radius: 4px;
-  background: rgba(4, 7, 12, 0.6);
-  color: #e8eef6;
-  font: 500 14px/1.3 var(--ui-font);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-  overflow-wrap: anywhere;
-  transition: opacity 0.6s;
-}
-.chat-line b { color: var(--accent); font-weight: 700; margin-right: 6px; }
-.chat-line.self b { color: #9fe870; }
-.chat-line.fading { opacity: 0; }
-
-/* the chat panel */
-.chat {
-  position: fixed;
-  z-index: 28;
-  left: 50%;
-  top: max(8px, env(safe-area-inset-top));
-  bottom: max(8px, env(safe-area-inset-bottom));
-  transform: translateX(-50%);
-  width: min(94vw, 520px);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid var(--panel-edge);
-  background: rgba(9, 15, 25, 0.95);
-  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.6);
-}
-.chat-head { display: flex; align-items: center; gap: 8px; font-family: var(--ui-font); }
-.chat-head strong { font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-.chat-head .button { margin-left: auto; }
-.chat-log {
-  flex: 1;
-  min-height: 60px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 6px;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.35);
-}
-.chat-log .chat-line { background: none; padding: 1px 2px; }
-.chat-log .empty { color: var(--muted); font-size: 13px; margin: auto; text-align: center; }
-.chat-quick { display: flex; flex-wrap: wrap; gap: 6px; }
-.chat-quick .button { min-height: 32px; padding: 0 10px; font-size: 13px; }
-.chat-form { display: flex; gap: 8px; }
-.chat-form input {
-  flex: 1;
-  min-width: 0;
-  min-height: 42px;
-  padding: 0 10px;
-  border-radius: 4px;
-  border: 1px solid var(--panel-edge);
-  background: #0e1117;
-  color: var(--text);
-  font: 16px -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-}
-
-/* custom content: the start page's section and the panel */
-.custom-games { margin-top: 18px; border-top: 1px solid var(--panel-edge); padding-top: 4px; }
-.custom-games #custom-summary.on { color: var(--accent); }
-.custom { z-index: 29; background: rgba(9, 15, 25, 0.985); }
-.custom-body { flex: 1; overflow-y: auto; padding: 0 2px; }
-.custom-body h3 { margin: 14px 0 2px; font: 700 14px/1.3 var(--ui-font); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
-.custom-body h3:first-of-type { margin-top: 4px; }
-.custom-rules { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); column-gap: 12px; }
-.custom-body select { min-height: 36px; border-radius: 8px; border: 1px solid var(--panel-edge); background: #0e1117; color: var(--text); padding: 0 8px; flex: 1; min-width: 0; }
-.custom-body label.locked { opacity: 0.55; }
-#custom-character-status.on { color: #9fe870; }
-#custom-character-status.off { color: #ffcf6e; }
-
-/* remote co-op: the host's section, and the friend's view of the host's game */
-.coop { margin-top: 12px; }
-.coop h3 { margin-bottom: 2px; }
-.coop-hosts { display: flex; flex-direction: column; gap: 6px; margin: 6px 0; }
-.coop-hosts .button { width: 100%; }
-.coop-view { position: fixed; inset: 0; z-index: 5; background: #000; }
-.coop-view video { width: 100vw; height: 100vh; height: 100dvh; object-fit: contain; display: block; background: #000; }
-.coop-bar {
-  position: fixed;
-  z-index: 12;
-  top: calc(6px + env(safe-area-inset-top));
-  left: calc(8px + env(safe-area-inset-left));
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  max-width: min(46vw, 420px);
-  padding: 4px 8px;
-  border-radius: 6px;
-  background: rgba(4, 7, 12, 0.72);
-  color: #e8eef6;
-  font: 500 13px/1.3 var(--ui-font);
-}
-.coop-bar select { min-height: 30px; border-radius: 6px; border: 1px solid var(--panel-edge); background: #0e1117; color: var(--text); }
-#coop-friend-status { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-body.coop-guest #screen { display: none; }
-</style></link>
-<link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style">:root, ::after, ::before, ::backdrop {
-  --native-dark-accent-color: #a9a9a9;
-  --native-dark-bg-blend-mode: multiply;
-  --native-dark-bg-color: #292929;
-  --native-dark-bg-image-color: rgba(0, 0, 0, 0.10);
-  --native-dark-bg-image-filter: brightness(50%) contrast(200%);
-  --native-dark-border-color: #555555;
-  --native-dark-box-shadow: 0 0 0 1px rgb(255 255 255 / 10%);
-  --native-dark-brightness: 0.85;
-  --native-dark-cite-color: #92de92;
-  --native-dark-fill-color: #7d7d7d;
-  --native-dark-font-color: #dcdcdc;
-  --native-dark-link-color: #8db2e5;
-  --native-dark-opacity: 0.85;
-  --native-dark-text-shadow: none;
-  --native-dark-transparent-color: transparent;
-  --native-dark-visited-link-color: #c76ed7
-}
-
-:root {
-  color-scheme: dark !important;
-  accent-color: var(--native-dark-accent-color);
-}
-
-.mwJvDe .KEDCCd {
-    transition: width cubic-bezier(0,0,.2,1) .15s 0s;
-    background-color: #292929 !important;
-    border-bottom: .0625rem solid rgb(35, 35, 35) !important;
-    float: right;
-}
-
-html a:visited, 
-html a:visited > *:not(svg) {
-  color: var(--native-dark-visited-link-color) !important;
-}
-
-a[ping]:link,
-a[ping]:link > *:not(svg),
-:link:not(cite) {
-  color: var(--native-dark-link-color) !important;
-}
-
-html cite,
-html cite a:link,
-html cite a:visited {
-  color: var(--native-dark-cite-color) !important;
-}
-
-figure:empty {
-  opacity: var(--native-dark-opacity) !important;
-}
-
-img,
-image {
-  filter: brightness(var(--native-dark-brightness)) !important;
-}
-        </style><style lang="en" type="text/css" id="dark-mode-native-sheet"></style><style class="native-dark-class-modified">
-            .flipX video::-webkit-media-text-track-display {
-                transform: matrix(-1, 0, 0, 1, 0, 0) !important;
-            }
-            .flipXY video::-webkit-media-text-track-display {
-                transform: matrix(-1, 0, 0, -1, 0, 0) !important;
-            }
-            .flipXYX video::-webkit-media-text-track-display {
-                transform: matrix(1, 0, 0, -1, 0, 0) !important;
-            }</style><style class="native-dark-class-modified">
-            @keyframes blinkWarning {
-                0% { color: red; }
-                100% { color: white; }
-            }
-            @-webkit-keyframes blinkWarning {
-                0% { color: red; }
-                100% { color: white; }
-            }
-            .blinkWarning {
-                -webkit-animation: blinkWarning 1s linear infinite;
-                -moz-animation: blinkWarning 1s linear infinite;
-                animation: blinkWarning 1s linear infinite;
-            }</style></head>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
 <div id="backdrop" class="backdrop" aria-hidden="true"></div>
 <canvas id="screen" aria-label="Game"></canvas>
 
-  <div id="sheet-ios" class="sheet" hidden="" role="dialog" aria-labelledby="sheet-ios-title">
+  <div id="sheet-ios" class="sheet" hidden role="dialog" aria-labelledby="sheet-ios-title">
     <h2 id="sheet-ios-title">Add it to your Home Screen</h2>
     <ol class="steps">
-      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"></path><path d="M8 10H6v11h12V10h-2"></path></svg></span>
+      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5"/><path d="M8 10H6v11h12V10h-2"/></svg></span>
         <span>Tap <strong>Share</strong> in Safari's toolbar (at the bottom, or at the top on iPad).</span></li>
-      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M12 8v8M8 12h8"></path></svg></span>
+      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg></span>
         <span>Scroll down and tap <strong>Add to Home Screen</strong>, then <strong>Add</strong>.</span></li>
-      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M8 12l3 3 5-6"></path></svg></span>
+      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 12l3 3 5-6"/></svg></span>
         <span>Open <strong>Halo CE</strong> from your Home Screen. It runs full screen and keeps its data.</span></li>
     </ol>
     <p class="small">In Chrome or Edge on iPhone, Share is at the top right. Safari cannot add a site to the Home Screen by itself, so these steps are needed once.</p>
-    <button type="button" class="button primary" data-close="">Got it</button>
+    <button type="button" class="button primary" data-close>Got it</button>
   </div>
 
-  <div id="sheet-droid" class="sheet" hidden="" role="dialog" aria-labelledby="sheet-droid-title">
+  <div id="sheet-droid" class="sheet" hidden role="dialog" aria-labelledby="sheet-droid-title">
     <h2 id="sheet-droid-title">Install the app</h2>
     <ol class="steps">
-      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="12" cy="19" r="1.6"></circle></svg></span>
+      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="12" cy="19" r="1.6"/></svg></span>
         <span>In Chrome, tap the <strong>⋮</strong> menu at the top right.</span></li>
-      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5"></path><path d="M5 20h14"></path></svg></span>
+      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5"/><path d="M5 20h14"/></svg></span>
         <span>Tap <strong>Install app</strong> (or <strong>Add to Home screen</strong>), then <strong>Install</strong>.</span></li>
-      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M8 12l3 3 5-6"></path></svg></span>
+      <li><span class="step-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 12l3 3 5-6"/></svg></span>
         <span>Open <strong>Halo CE</strong> from your home screen or app drawer.</span></li>
     </ol>
     <p class="small">Samsung Internet: tap ☰, then <strong>Add page to</strong>, then <strong>Home screen</strong>.</p>
-    <button type="button" class="button primary" data-close="">Got it</button>
+    <button type="button" class="button primary" data-close>Got it</button>
   </div>
-<div id="touch" class="touch-layer" hidden=""></div>
-<div id="fps" class="fps" hidden=""></div>
+<div id="touch" class="touch-layer" hidden></div>
+<div id="fps" class="fps" hidden></div>
 
 <main id="launcher">
   <section class="panel">
@@ -1171,46 +55,46 @@ image {
       <p class="subtitle">The Halo: Combat Evolved decompilation, running in your browser.</p>
     </header>
 
-    <div id="step-play" class="step">
+    <div id="step-play" class="step" hidden>
       <button id="play" class="button primary" type="button">Play</button>
-      <p class="small" id="data-summary">Plays Downloaded Halo maps (streamed).</p>
+      <p class="small" id="data-summary"></p>
     </div>
 
     <div class="step">
-      <button class="button primary" id="play-streamed-maps" type="button">Play streamed maps</button>
+      <button class="button primary" id="play-streamed-maps" type="button" hidden>Play streamed maps</button>
     </div>
 
-    <div id="checks" class="checks" aria-live="polite"><details class="checks-ok"><summary>Ready: this device can run the game</summary><div class="check">Threads (SharedArrayBuffer)</div><div class="check">WebGL 2 from a worker (OffscreenCanvas; iOS 17 or later)</div><div class="check">Private file storage (OPFS)</div><div class="check">Memory (2.1 GB of address space)</div></details></div>
-    <p id="controller-status" class="hint controller-status">Using a controller? Pair it (Bluetooth) or plug it in, then press any button on it.</p>
+    <div id="checks" class="checks" aria-live="polite"></div>
+    <p id="controller-status" class="hint controller-status"></p>
 
-    <div id="install-hint" class="hint" hidden="">
+    <div id="install-hint" class="hint" hidden>
       <strong>Install it</strong> for full screen play that keeps its data.
       <button type="button" class="button small-button" id="install-hint-how">How</button>
     </div>
-    <div id="install-android" class="hint">
+    <div id="install-android" class="hint" hidden>
       <strong>Install it</strong> for full screen play that keeps its data.
-      <button type="button" class="button small-button" id="install-button">Install app</button>
-      <span id="install-android-menu" hidden=""><button type="button" class="button small-button" id="install-android-how">How</button></span>
+      <button type="button" class="button small-button" id="install-button" hidden>Install app</button>
+      <span id="install-android-menu"><button type="button" class="button small-button" id="install-android-how">How</button></span>
     </div>
 
     <div id="step-data" class="step">
       <h2>Game data</h2>
-      <p id="data-intro" hidden="">The game needs the <code>maps</code> folder of your own Xbox disc image of Halo: Combat Evolved
+      <p id="data-intro">The game needs the <code>maps</code> folder of your own Xbox disc image of Halo: Combat Evolved
         (<code>.iso</code> or <code>.xiso</code>, any version). It is copied into this app's private storage
         (up to 1.8 GB); the disc image itself can be deleted afterwards. Nothing is uploaded anywhere.</p>
-      <div id="games" class="games" role="radiogroup" aria-label="Copies of the game"><div class="game chosen"><label class="game-pick"><input type="radio" name="game"><span><strong>Downloaded Halo maps (streamed)</strong><small>Campaign and multiplayer · 24 maps · 1.86 GB · On demand · requires the hosting server</small></span></label></div></div>
-      <label class="button" id="add-label" for="iso-file">Add another disc image…</label>
-      <input id="iso-file" type="file" accept=".iso,.xiso,application/octet-stream,application/x-iso9660-image" hidden="">
+      <div id="games" class="games" role="radiogroup" aria-label="Copies of the game"></div>
+      <label class="button primary" id="add-label" for="iso-file">Choose disc image…</label>
+      <input id="iso-file" type="file" accept=".iso,.xiso,application/octet-stream,application/x-iso9660-image" hidden>
       <label class="button" for="maps-folder">Import maps folder…</label>
-      <input id="maps-folder" type="file" webkitdirectory="" multiple="" hidden="">
-      <button class="button" id="import-local-maps" type="button">Download all maps for offline use</button>
+      <input id="maps-folder" type="file" webkitdirectory multiple hidden>
+      <button class="button" id="import-local-maps" type="button" hidden>Download all maps for offline use</button>
       <p class="small">Import an extracted maps folder with ui.map and version-5 Xbox .map files.
         Stream from the hosting server to skip the full download, or import all maps for offline use.
         Keep the hosting server available while streaming; new maps still need loading.
         Keep existing installations and their saves.</p>
       <p class="small">Add as many disc images as you like (a multiplayer disc, a full game, a modded one) and pick
         the one to play. Each keeps its own saved games.</p>
-      <div id="progress" class="progress" hidden="">
+      <div id="progress" class="progress" hidden>
         <div class="bar"><div id="progress-fill"></div></div>
         <p id="progress-text"></p>
       </div>
@@ -1219,7 +103,7 @@ image {
     <section class="online" aria-labelledby="online-title">
       <h2 id="online-title">Play online</h2>
       <p class="small">Everyone in a room is on one system link network: host a game from Multiplayer &gt;
-        System Link, and the others see it there. Your address: <code id="online-address">10.155.20.30</code></p>
+        System Link, and the others see it there. Your address: <code id="online-address"></code></p>
       <label class="row">Your name <input id="online-name" type="text" maxlength="24" placeholder="Player" autocomplete="nickname"></label>
       <div id="online-quick" class="row">
         <button type="button" class="button primary" id="quick-match">Quick Match</button>
@@ -1230,22 +114,22 @@ image {
         <input id="online-input" type="text" inputmode="latin" autocapitalize="characters" placeholder="Room code" maxlength="16">
         <button type="button" class="button" id="online-enter">Join</button>
       </div>
-      <div id="online-room" hidden="">
+      <div id="online-room" hidden>
         <p class="room-line">Room <strong id="online-code"></strong>
           <button type="button" class="button small-button" id="online-share">Share link</button>
           <button type="button" class="button small-button" id="online-leave">Leave</button>
           <button type="button" class="button small-button" id="online-chat">Chat</button></p>
         <p class="small" id="online-status"></p>
         <p class="small" id="online-names"></p>
-        <p class="hint" id="online-role" hidden=""></p>
+        <p class="hint" id="online-role" hidden></p>
         <label class="row"><input type="checkbox" id="online-public"> List this room in Open games</label>
-        <label class="row" id="online-note-row" hidden="">Note
+        <label class="row" id="online-note-row" hidden>Note
           <input id="online-note" type="text" maxlength="48" placeholder="Slayer on Blood Gulch, all welcome"></label>
         <div class="coop" id="coop-section">
           <h3>Co-op</h3>
           <label class="row"><input type="checkbox" id="coop-host"> Host co-op: a friend in this room plays as player 2
             from their own device</label>
-          <p class="small" id="coop-status" hidden=""></p>
+          <p class="small" id="coop-status"></p>
           <div id="coop-hosts" class="coop-hosts"></div>
           <p class="small">The host plays the game and streams player 2's view to the friend, who needs no game
             data. In Halo the host picks Multiplayer &gt; Cooperative Play for the campaign (the full game), or Split
@@ -1253,9 +137,9 @@ image {
         </div>
       </div>
       <div class="lobby">
-        <h3>Open games <span id="lobby-count" class="small">(4)</span></h3>
-        <div id="lobby-list" class="lobby-list"><div class="lobby-room"><span class="who"><strong>Daddio's game</strong><small>Full game · 24 maps · Daddio's game</small></span><span class="count">16/16</span><button type="button" class="button small-button" disabled="">Full</button></div><div class="lobby-room"><span class="who"><strong>Player's game</strong><small>Full game · 24 maps</small></span><span class="count">15/16</span><button type="button" class="button small-button">Join</button></div><div class="lobby-room"><span class="who"><strong>felsen's game</strong><small>Full game · 24 maps</small></span><span class="count">9/16</span><button type="button" class="button small-button">Join</button></div><div class="lobby-room"><span class="who"><strong>FancySageDude's game</strong><small>Full game · 24 maps</small></span><span class="count">2/16</span><button type="button" class="button small-button">Join</button></div></div>
-        <p class="small" id="lobby-empty" hidden="">No open games right now. Quick Match opens one others can join.</p>
+        <h3>Open games <span id="lobby-count" class="small"></span></h3>
+        <div id="lobby-list" class="lobby-list"></div>
+        <p class="small" id="lobby-empty">No open games right now. Quick Match opens one others can join.</p>
       </div>
     </section>
 
@@ -1275,8 +159,8 @@ image {
         </select>
         <button type="button" class="button small-button" id="edit-layout">Edit layout</button></label>
       <label class="row">Aim sensitivity <input type="range" id="opt-look" min="0.4" max="3" step="0.1"></label>
-      <label class="row"><input type="checkbox" id="opt-silent" checked=""> Sound when the phone is on silent (pauses music from other apps)</label>
-      <label class="row"><input type="checkbox" id="opt-vsync" checked=""> Wait for the display (smoother, saves battery)</label>
+      <label class="row"><input type="checkbox" id="opt-silent" checked> Sound when the phone is on silent (pauses music from other apps)</label>
+      <label class="row"><input type="checkbox" id="opt-vsync" checked> Wait for the display (smoother, saves battery)</label>
       <label class="row"><input type="checkbox" id="opt-fps"> Show the frame rate</label>
       <label class="row">Resolution
         <select id="opt-resolution">
@@ -1298,15 +182,15 @@ image {
       <div class="row buttons">
         <button type="button" class="button" id="export-saves">Export saved games</button>
         <label class="button" for="import-saves-file">Restore saved games…</label>
-        <input id="import-saves-file" type="file" accept=".zip,application/zip" hidden="">
+        <input id="import-saves-file" type="file" accept=".zip,application/zip" hidden>
         <button type="button" class="button" id="show-log">Show log</button>
         <button type="button" class="button danger" id="delete-data">Delete all game data</button>
       </div>
-      <p class="small" id="storage-summary">Storage: 0.79 GB used of 613.5 GB this site may use.</p>
-      <p class="small" id="version">Build 15557dbdc205b12d</p>
+      <p class="small" id="storage-summary"></p>
+      <p class="small" id="version"></p>
     </details>
 
-    <nav class="legal build-versions" aria-label="Build versions">v2 · <a href="https://halo.lolgames.net/">Latest</a> · <a href="https://halo.lolgames.net/versions/">All versions</a></nav>
+    <nav class="legal build-versions" aria-label="Build versions">v2 · <a href="/">Latest</a> · <a href="/versions/">All versions</a></nav>
     <p class="legal credits"><strong>Credits.</strong> Halo CE Mobile is built on
       <a href="https://github.com/fucktrevor/HCE-Mobile" target="_blank" rel="noopener">HCE-Mobile</a> by fucktrevor, which is built on
       <a href="https://github.com/cybersecurity/halo-ce-universal" target="_blank" rel="noopener">halo-ce-universal</a>
@@ -1321,30 +205,30 @@ image {
   </section>
 </main>
 
-<button type="button" id="menu-button" class="menu-button" aria-label="Menu" hidden="">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-  <span id="chat-unread" class="unread" hidden=""></span>
+<button type="button" id="menu-button" class="menu-button" aria-label="Menu" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  <span id="chat-unread" class="unread" hidden></span>
 </button>
 <div id="chat-feed" class="chat-feed" aria-live="polite"></div>
-<div id="chat" class="chat" hidden="" role="dialog" aria-label="Chat">
+<div id="chat" class="chat" hidden role="dialog" aria-label="Chat">
   <div class="chat-head">
     <strong>Chat</strong> <span id="chat-room" class="small"></span>
     <button type="button" class="button small-button" id="chat-close">Close</button>
   </div>
   <div id="chat-log" class="chat-log"></div>
-  <div class="chat-quick" id="chat-quick"><button type="button" class="button">GG</button><button type="button" class="button">Nice shot!</button><button type="button" class="button">Need backup</button><button type="button" class="button">On my way</button><button type="button" class="button">Ready?</button><button type="button" class="button">One more?</button></div>
+  <div class="chat-quick" id="chat-quick"></div>
   <form id="chat-form" class="chat-form" autocomplete="off">
     <input id="chat-input" type="text" maxlength="200" placeholder="Message the room" enterkeyhint="send">
     <button type="submit" class="button primary small-button">Send</button>
   </form>
 </div>
-<div id="custom" class="chat custom" hidden="" role="dialog" aria-label="Custom content">
+<div id="custom" class="chat custom" hidden role="dialog" aria-label="Custom content">
   <div class="chat-head">
     <strong>Custom content</strong>
     <button type="button" class="button small-button" id="custom-close">Done</button>
   </div>
   <div class="custom-body">
-    <p class="hint" id="custom-host" hidden=""></p>
+    <p class="hint" id="custom-host" hidden></p>
     <h3>Game rules</h3>
     <p class="small">Campaign and multiplayer. They change as soon as you tap them. Online, everyone in the room
       plays by the host's rules.</p>
@@ -1386,8 +270,8 @@ image {
     <label class="row"><input type="checkbox" data-rule="128"> Third-person camera (just for you)</label>
   </div>
 </div>
-<div id="coop-view" class="coop-view" hidden="">
-  <video id="coop-video" playsinline="" autoplay=""></video>
+<div id="coop-view" class="coop-view" hidden>
+  <video id="coop-video" playsinline autoplay></video>
   <div class="coop-bar">
     <span id="coop-friend-status">Connecting…</span>
     <select id="coop-part" aria-label="What to show">
@@ -1397,7 +281,7 @@ image {
     <button type="button" class="button small-button" id="coop-leave">Leave</button>
   </div>
 </div>
-<div id="game-menu" class="overlay game-menu" hidden="">
+<div id="game-menu" class="overlay game-menu" hidden>
   <div class="panel">
     <h2>Menu</h2>
     <label class="row">Aim sensitivity <input type="range" id="menu-look" min="0.4" max="3" step="0.1"></label>
@@ -1409,9 +293,9 @@ image {
       <button type="button" class="button small-button" id="menu-edit-layout">Edit layout</button></label>
     <div class="row buttons"><button type="button" class="button" id="menu-chat">Chat</button>
       <button type="button" class="button" id="menu-custom">Custom content</button></div>
-    <label class="row" id="menu-coop-row" hidden=""><input type="checkbox" id="menu-coop"> Host co-op (a friend in the room plays
+    <label class="row" id="menu-coop-row" hidden><input type="checkbox" id="menu-coop"> Host co-op (a friend in the room plays
       as player 2)</label>
-    <p class="small" id="menu-coop-status" hidden=""></p>
+    <p class="small" id="menu-coop-status" hidden></p>
     <label class="row"><input type="checkbox" id="menu-silent"> Sound when the phone is on silent</label>
     <label class="row"><input type="checkbox" id="menu-fps"> Show the frame rate</label>
     <label class="row">Resolution
@@ -1433,11 +317,11 @@ image {
     </div>
   </div>
 </div>
-<div id="layout-editor" class="layout-editor" hidden=""></div>
-<div id="rotate" class="overlay" hidden=""><p>Turn your device sideways to play.</p></div>
-<div id="toast" class="toast" hidden=""></div>
-<div id="map-loading" class="toast" role="status" aria-live="polite" hidden=""></div>
-<div id="fatal" class="overlay fatal" hidden="">
+<div id="layout-editor" class="layout-editor" hidden></div>
+<div id="rotate" class="overlay" hidden><p>Turn your device sideways to play.</p></div>
+<div id="toast" class="toast" hidden></div>
+<div id="map-loading" class="toast" role="status" aria-live="polite" hidden></div>
+<div id="fatal" class="overlay fatal" hidden>
   <div class="panel">
     <h2>The game stopped</h2>
     <pre id="fatal-text"></pre>
@@ -1447,7 +331,7 @@ image {
     </div>
   </div>
 </div>
-<div id="log-view" class="overlay" hidden="">
+<div id="log-view" class="overlay" hidden>
   <div class="panel wide">
     <pre id="log-text"></pre>
     <div class="row buttons">
@@ -1457,13 +341,12 @@ image {
   </div>
 </div>
 
-<script src="./Halo CE Mobile_files/input.js.download"></script>
-<script src="./Halo CE Mobile_files/net.js.download"></script>
-<script src="./Halo CE Mobile_files/coop.js.download"></script>
-<script src="./Halo CE Mobile_files/lobby.js.download"></script>
-<script src="./Halo CE Mobile_files/stream-maps.js.download"></script>
-<script src="./Halo CE Mobile_files/presenter.js.download"></script>
-<script src="./Halo CE Mobile_files/app.js.download"></script>
-
-
-</body></html>
+<script src="input.js"></script>
+<script src="net.js"></script>
+<script src="coop.js"></script>
+<script src="lobby.js"></script>
+<script src="stream-maps.js"></script>
+<script src="presenter.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
