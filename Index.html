@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script src="archive-runtime.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -56,13 +55,13 @@
       <p class="subtitle">The Halo: Combat Evolved decompilation, running in your browser.</p>
     </header>
 
-    <div id="step-play" class="step" shown>
+    <div id="step-play" class="step" hidden>
       <button id="play" class="button primary" type="button">Play</button>
       <p class="small" id="data-summary"></p>
     </div>
 
     <div class="step">
-      <button class="button primary" id="play-streamed-maps" type="button" shown>Play streamed maps</button>
+      <button class="button primary" id="play-streamed-maps" type="button" hidden>Play streamed maps</button>
     </div>
 
     <div id="checks" class="checks" aria-live="polite"></div>
@@ -191,7 +190,7 @@
       <p class="small" id="version"></p>
     </details>
 
-    <nav class="legal build-versions" aria-label="Build versions">v2 archive · separate saves and settings · <a href="/">Latest</a> · <a href="/versions/">All versions</a></nav>
+    <nav class="legal build-versions" aria-label="Build versions">v2 · <a href="/">Latest</a> · <a href="/versions/">All versions</a></nav>
     <p class="legal credits"><strong>Credits.</strong> Halo CE Mobile is built on
       <a href="https://github.com/fucktrevor/HCE-Mobile" target="_blank" rel="noopener">HCE-Mobile</a> by fucktrevor, which is built on
       <a href="https://github.com/cybersecurity/halo-ce-universal" target="_blank" rel="noopener">halo-ce-universal</a>
